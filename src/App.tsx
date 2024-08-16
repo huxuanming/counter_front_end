@@ -23,12 +23,10 @@ function App() {
   const [depositAmount, setDepositAmount] = useState('')
 
   const handleDepositChange = (event: any) => {
-    console.log(event)
     setDepositAmount(event.target.value)
   }
 
   const handleChange = (event: any) => {
-    console.log(event)
     setWithdrawAmount(event.target.value)
   }
 
@@ -93,7 +91,7 @@ function App() {
             </div>
             )}
           <br />
-          {connected && (
+          {/* {connected && (
               <a
                 onClick={() => {
                   sendDeploy();
@@ -101,7 +99,7 @@ function App() {
               >
                 Deploy
               </a>
-            )}
+            )} */}
       </div>
     </div>
   );
