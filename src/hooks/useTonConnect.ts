@@ -1,8 +1,8 @@
-import { useTonConnectUI } from '@tonconnect/ui-react';
-import { Sender, SenderArguments } from 'ton-core';
+import { useTonConnectUI } from '@tonconnect/ui-react'
+import { Sender, SenderArguments } from 'ton-core'
 
 export function useTonConnect(): { sender: Sender; connected: boolean } {
-  const [tonConnectUI] = useTonConnectUI();
+  const [tonConnectUI] = useTonConnectUI()
 
   return {
     sender: {
@@ -16,9 +16,9 @@ export function useTonConnect(): { sender: Sender; connected: boolean } {
             },
           ],
           validUntil: Date.now() + 5 * 60 * 1000, // 5 minutes for user to approve
-        });
+        })
       },
     },
     connected: tonConnectUI.connected,
-  };
+  }
 }

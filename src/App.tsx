@@ -1,9 +1,9 @@
 import './App.css'
-import { TonConnectButton } from '@tonconnect/ui-react';
-import { useMainContract } from "./hooks/useMainContract";
-import { useTonConnect } from "./hooks/useTonConnect";
-import { fromNano } from 'ton-core';
-import { useState } from 'react';
+import { TonConnectButton } from '@tonconnect/ui-react'
+import { useMainContract } from './hooks/useMainContract'
+import { useTonConnect } from './hooks/useTonConnect'
+import { fromNano } from 'ton-core'
+import { useState } from 'react'
 
 function App() {
   const {
@@ -16,7 +16,7 @@ function App() {
     sendDeposit,
     sendWithdraw,
     sendDeploy,
-  } = useMainContract();
+  } = useMainContract()
 
   const { connected } = useTonConnect()
   const [withdrawAmount, setWithdrawAmount] = useState('')
@@ -36,62 +36,61 @@ function App() {
         <TonConnectButton />
       </div>
       <div>
-        <div className='Card'>
+        <div className="Card">
           <b>Our contract Address</b>
-          <div className='Hint'>{contract_address}</div>
+          <div className="Hint">{contract_address}</div>
           <b>Our contract Balance</b>
-          <div className='Hint'>{ contract_balance && fromNano(contract_balance) }</div>
+          <div className="Hint">{contract_balance && fromNano(contract_balance)}</div>
           <b>Our Recent Sender</b>
-          <div className='Hint'>{ recent_sender?.toString() ?? "Loading..." }</div>
+          <div className="Hint">{recent_sender?.toString() ?? 'Loading...'}</div>
           <b>Our Owner Address</b>
-          <div className='Hint'>{ owner_address?.toString() ?? "Loading..." }</div>
+          <div className="Hint">{owner_address?.toString() ?? 'Loading...'}</div>
         </div>
 
-        <div className='Card'>
+        <div className="Card">
           <b>Counter Value</b>
-          <div>{counter_value ?? "Loading..."}</div>
+          <div>{counter_value ?? 'Loading...'}</div>
         </div>
 
-          {connected && (
-              <a
-                onClick={() => {
-                  sendIncrement();
-                }}
-              >
-                Increment
-              </a>
-            )}
-          <br />
-          {connected && (
-            <div>
-              <input type="text" value={ depositAmount } onInput={handleDepositChange} placeholder='请输入充值金额'></input>
-              <a
-                onClick={() => {
-                  sendDeposit(depositAmount);
-                }}
-              >
-                Deposit
-              </a>
-            </div>
-            
-            )}
+        {connected && (
+          <a
+            onClick={() => {
+              sendIncrement()
+            }}
+          >
+            Increment
+          </a>
+        )}
+        <br />
+        {connected && (
+          <div>
+            <input type="text" value={depositAmount} onInput={handleDepositChange} placeholder="请输入充值金额"></input>
+            <a
+              onClick={() => {
+                sendDeposit(depositAmount)
+              }}
+            >
+              Deposit
+            </a>
+          </div>
+        )}
 
-          <br />
-          
-          {connected && (
-            <div>
-              <input type="text" value={ withdrawAmount } onInput={handleChange} placeholder='请输入提现金额'></input>
-              <a
-                onClick={() => {
-                  sendWithdraw(withdrawAmount);
-                }}
-              >
-                Withdraw
-              </a>
-            </div>
-            )}
-          <br />
-          {/* {connected && (
+        <br />
+
+        {connected && (
+          <div>
+            <input type="text" value={withdrawAmount} onInput={handleChange} placeholder="请输入提现金额"></input>
+            <a
+              onClick={() => {
+                sendWithdraw(withdrawAmount)
+              }}
+            >
+              Withdraw
+            </a>
+          </div>
+        )}
+        <br />
+        {/* {connected && (
               <a
                 onClick={() => {
                   sendDeploy();
@@ -102,7 +101,7 @@ function App() {
             )} */}
       </div>
     </div>
-  );
+  )
 }
 
 export default App
